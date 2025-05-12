@@ -32,7 +32,6 @@ data = []
 with open(tsv_file, encoding="utf-8") as f:
     reader = csv.DictReader(f, delimiter="\t")
     for row in reader:
-        print(row)
         audio_path = f"{clips_folder}/{row['audio']}"
         data.append({
             "audio": audio_path,
