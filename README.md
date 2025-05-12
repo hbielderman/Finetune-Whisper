@@ -12,6 +12,6 @@
    ```bash
    pip install -r requirements.txt
 3. **Training**  
-  Set the output directory, path to the Common Voice folder and the desired modifications. Then run the code on the cluster.
+  Set the whisper model, output directory, path to the Common Voice folder and the desired modifications. Then run the code on the cluster.
 4. **Evaluate**  
    Set the model directory and the path to the test data folder. Then run the code on the cluster.
