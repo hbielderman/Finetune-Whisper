@@ -18,8 +18,11 @@ import librosa
 import torch
 import evaluate
 
+# Set Whisper model
+whisper_model = "openai/whisper-medium"
+
 # Set output dir
-output_dir_name = "/scratch/hbielderman/whisper-base-dutch-adult-modified"
+output_dir_name = "/scratch/hbielderman/whisper-finetuned"
 
 # Set modifications
 speed_perturbation = True
@@ -33,12 +36,12 @@ tsv_file = f"{cv_base}/train.tsv"
 clips_folder = f"{cv_base}/clips"
 
 # Get whisper model
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-base", cache_dir="/tmp/huggingface")
+model = WhisperForConditionalGeneration.from_pretrained(whisper_model, cache_dir="/tmp/huggingface")
 model.generation_config.task = "transcribe"
 model.generation_config.forced_decoder_ids = None
-feature_extractor = WhisperFeatureExtractor.from_pretrained("openai/whisper-base", cache_dir="/tmp/huggingface")
-tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-base", cache_dir="/tmp/huggingface", language="Dutch", task="transcribe")
-processor = WhisperProcessor.from_pretrained("openai/whisper-base", cache_dir="/tmp/huggingface", language="Dutch", task="transcribe")
+feature_extractor = WhisperFeatureExtractor.from_pretrained(whisper_model, cache_dir="/tmp/huggingface")
+tokenizer = WhisperTokenizer.from_pretrained(whisper_model, cache_dir="/tmp/huggingface", language="Dutch", task="transcribe")
+processor = WhisperProcessor.from_pretrained(whisper_model, cache_dir="/tmp/huggingface", language="Dutch", task="transcribe")
 
 # Get (audio path, transcription) format
 data = []
