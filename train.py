@@ -19,10 +19,10 @@ import torch
 import evaluate
 
 # Set Whisper model
-whisper_model = "openai/whisper-medium"
+whisper_model = "openai/whisper-base"
 
 # Set output dir
-output_dir_name = "/scratch/hbielderman/whisper-finetuned"
+output_dir_name = "/whisper-finetuned"
 
 # Set modifications
 speed_perturbation = True
