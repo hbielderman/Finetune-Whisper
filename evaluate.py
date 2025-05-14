@@ -20,7 +20,7 @@ import torch
 import evaluate
 
 # Set model dir
-model_dir_name = "openai/whisper-base"
+model_dir_name = "/whisper-finetuned"
 
 # Path to test data folder
 cv_base = "/vol/bigdata3/datasets3/dutch_child_audio"
