@@ -1,1 +1,9 @@
-
+datasets==3.5.1
+evaluate==0.4.3
+jiwer==3.1.0
+librosa==0.11.0
+numpy==2.3.0
+torch==2.7.0
+torchaudio==2.7.0
+transformers==4.52.4
+specAugment @ git+https://github.com/saeedzou/SpecAugment.git@f3fa644d8c3596ce3f1fa60cc0602886198988d5
