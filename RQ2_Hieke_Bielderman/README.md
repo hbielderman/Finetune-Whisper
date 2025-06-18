@@ -3,7 +3,9 @@
 ## Project Structure
 - **`train.py`**: Fine-tunes openai/whisper-base on the Dutch adult speech corpera Common Voice with option for speech augmentations (speed perturbation and SpecAugment).
 - **`eval.py`**: Evaluates the fine-tuned model on the Dutch child speech copora JASMIN-CGN.
-- **`requirements.txt`**: Contains the required dependecies. Please note that the libsox.so library should also be installed.
+- **`requirements.txt`**: Contains the required dependecies. Note: The SoX command-line tool and its shared library (libsox.so) must be installed separately on your system, as they are not Python packages.
+
+
 
 ## Usage
 1. **Requirements**  
