@@ -6,6 +6,6 @@ This repository contains code and experiments for evaluating Whisper's performan
 
 - **RQ1:** How well does Whisper pretrained on adult speech generalize to children's read speech? And to what extent does further fine-tuning on child-specific corpora enhance recognition accuracy?
 
-- **RQ2:** Can speed perturbation and SpecAugment applied to adult speech during fine-tuning improve the performance of Whisper-small on Dutch child speech recognition?
+- **RQ2:** Can applying speed perturbation and SpecAugment to adult speech used for fine-tuning improve Whisper-small’s performance on Dutch children’s speech recognition tasks?
 
 Two corresponding folders are provided for each question's code and results.
