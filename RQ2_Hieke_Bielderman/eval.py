@@ -14,7 +14,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 torch.cuda.empty_cache()
 
 # Paths
-model_dir = "/vol/tensusers8/hbielderman/final-pre-cgn-combined"
+model_dir = "/model"
 
 cv_base = "/vol/bigdata3/datasets3/dutch_child_audio"
 tsv_path = f"{cv_base}/jasmin/tsv/ref_comp-q-read_nl_age7-11_nat.tsv"
