@@ -111,7 +111,7 @@ def prepare_testset(batch):
     batch["labels"] = tokenizer(batch["sentence"]).input_ids
     return batch
 
-CGN["train"] = CGN["train"].map(prepare_trainset, batched=True, batch_size=8, num_proc=4, remove_columns=common_voice["train"].column_names)
+CGN["train"] = CGN["train"].map(prepare_trainset, batched=True, batch_size=8, num_proc=4, remove_columns=CGN["train"].column_names)
 CGN["test"] = CGN["test"].map(prepare_testset, remove_columns=CGN.column_names["test"], num_proc=4,  batched=True, batch_size=16)
 
 # Define datacollator
