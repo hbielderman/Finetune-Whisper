@@ -1,6 +1,8 @@
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 import re
 import torch
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 import csv
 import json
 from dataclasses import dataclass
@@ -9,9 +11,6 @@ from datasets import Audio, Dataset, DatasetDict
 from transformers import WhisperForConditionalGeneration, WhisperProcessor
 from jiwer import cer, wer
 from jiwer import Compose, ToLowerCase, RemovePunctuation, RemoveMultipleSpaces, Strip, wer, cer
-
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-torch.cuda.empty_cache()
 
 # Paths
 model_dir = "/model"
