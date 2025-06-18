@@ -3,7 +3,7 @@
 ## Project Structure
 - **`train.py`**: Fine-tunes openai/whisper-base on the Dutch adult speech corpera Common Voice with option for speech augmentations (speed perturbation and SpecAugment).
 - **`eval.py`**: Evaluates the fine-tuned model on the Dutch child speech copora JASMIN-CGN.
-- **`requirements.txt`**: Contains the required dependecies.
+- **`requirements.txt`**: Contains the required dependecies. Please note that the libsox.so library should also be installed.
 
 ## Usage
 1. **Requirements**  
@@ -15,3 +15,5 @@
   Set the whisper model, output directory, path to the Common Voice folder, path to the preprocessed JASIM-CGN folder and the desired modifications. Then run the code on the cluster.
 4. **Evaluation**  
    Set the model directory and the path to the test data folder. Then run the code on the cluster.
+
+   
