@@ -7,6 +7,7 @@ import torch
 import evaluate
 import re
 import random
+import torchaudio.sox_effects as sox_effects
 from transformers import WhisperFeatureExtractor
 from transformers import WhisperTokenizer
 from transformers import WhisperProcessor
@@ -22,15 +23,12 @@ from datasets import DatasetDict
 
 # Settings
 whisper_model = "openai/whisper-small"
-output_dir_name = "./final-pre-cgn-combined"
+output_dir_name = "./model"
 cv_base = "/vol/bigdata3/corpora3/CGN_NL_Chunks/comp_o/"
 tsv_file = f"{cv_base}/text/comp_o.csv"
 clips_folder = f"{cv_base}/audio"
 speed_perturbation = True
 spec_augmentation = True
-
-if speed_perturbation:
-    perturb = SpeedPerturbation(orig_freq=16000, factors=[0.9, 1.0, 1.1])
 
 # Get Whisper model
 model = WhisperForConditionalGeneration.from_pretrained(whisper_model, cache_dir="/tmp/huggingface")
@@ -41,7 +39,7 @@ tokenizer = WhisperTokenizer.from_pretrained(whisper_model, cache_dir="/tmp/hugg
 processor = WhisperProcessor.from_pretrained(whisper_model, cache_dir="/tmp/huggingface", language="Dutch", task="transcribe")
 
 # Get data
-MAX_FILES = 25_000
+MAX_FILES = 10_000
 all_data = []
 with open(tsv_file, encoding="utf-8") as f:
     reader = csv.DictReader(f, delimiter=",")
@@ -64,25 +62,42 @@ CGN = DatasetDict({
     "test": CGN_test,
 })
 
+speed_factors = [0.9, 1.0, 1.1]
+
+def apply_speed_perturbation(waveform: torch.Tensor, speed: float) -> torch.Tensor:
+    effects = [
+        ["speed", f"{speed}"],
+        ["rate", "16000"]
+    ]
+    augmented_waveform, _ = sox_effects.apply_effects_tensor(waveform.unsqueeze(0), 16000, effects)
+    return augmented_waveform.squeeze(0)
+
 
 def prepare_trainset(batch):
-    audio = batch["audio"]
-    waveform = audio["array"]
+    augmented_features = []
+    augmented_labels = []
 
-    if speed_perturbation:
-      # Apply speed perturbation
-      waveform = torch.tensor(waveform, dtype=torch.float32).cpu()
-      perturbed_waveform, _ = perturb(waveform)
-      waveform = perturbed_waveform.squeeze(0).numpy()
+    for i in range(len(batch["audio"])):
+        waveform = torch.tensor(batch["audio"][i]["array"], dtype=torch.float32)
+        sentence = batch["sentence"][i]
+
+        for speed in speed_factors:
+            # Apply speed perturbation (define this function)
+            if speed != 1.0 and speed_perturbation:
+                augmented_waveform = apply_speed_perturbation(waveform, speed)
+            else:
+                augmented_waveform = waveform
+
+            audio_array = augmented_waveform.numpy()
 
     # compute log-Mel input features
     features = feature_extractor(waveform, sampling_rate=audio["sampling_rate"]).input_features[0]
 
     if spec_augmentation:
       # Apply spectral augmentation
-      features_tensor = torch.tensor(features, dtype=torch.float32).unsqueeze(0).cpu()
-      augmented_tensor = spec_augment_pytorch.spec_augment(features_tensor)
-      features = augmented_tensor.squeeze(0).numpy()
+      features_tensor = torch.tensor(features, dtype=torch.float32).unsqueeze(0).transpose(1, 2).cpu()
+      augmented_tensor = spec_augment_pytorch.spec_augment(features_tensor, time_warping_para=5, frequency_masking_para=20, time_masking_para=30)
+      features = augmented_tensor.transpose(1, 2).squeeze(0).numpy()
 
     batch["input_features"] = features
     batch["labels"] = tokenizer(batch["sentence"]).input_ids
@@ -96,8 +111,8 @@ def prepare_testset(batch):
     batch["labels"] = tokenizer(batch["sentence"]).input_ids
     return batch
 
-CGN["train"] = CGN["train"].map(prepare_trainset, remove_columns=CGN.column_names["train"], num_proc=1)
-CGN["test"] = CGN["test"].map(prepare_testset, remove_columns=CGN.column_names["test"], num_proc=1,  batched=True, batch_size=16)
+CGN["train"] = CGN["train"].map(prepare_trainset, batched=True, batch_size=8, num_proc=4, remove_columns=common_voice["train"].column_names)
+CGN["test"] = CGN["test"].map(prepare_testset, remove_columns=CGN.column_names["test"], num_proc=4,  batched=True, batch_size=16)
 
 # Define datacollator
 @dataclass
