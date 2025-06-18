@@ -1,0 +1,20 @@
+📂 Loading dataset...
+🔄 Loading model and processor...
+🔍 Loaded model: ./whisper_nl_CGN/best with 241734912 parameters
+🚀 Using GPU for processing!
+🔄 Preprocessing dataset...
+🚀 Using GPU for evaluation!
+🔍 Starting manual evaluation...
+📝 Sample prediction #1:  voetbal aan.
+📝 Reference #1: mmm voetballen
+📝 Sample prediction #2:  hafei liet.
+📝 Reference #2: gefel
+📝 Sample prediction #3:  Naar de eerste helft van deze opname.
+📝 Reference #3: naar de dierentuin
+📝 Sample prediction #4: 'sprekers zijn vaak moeilijk te verstaan.
+📝 Reference #4: nu al gelijk
+📝 Sample prediction #5:  en daarna wordt een Scope gespeeld.
+📝 Reference #5: naar de bioscoop
+
+📊 Final Evaluation Results:
+WER: 1.2409 | CER: 1.1492

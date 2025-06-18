@@ -1,0 +1,20 @@
+📂 Loading dataset...
+🔄 Loading model and processor...
+🔍 Loaded model: ./whisper_nl_child/best with 241734912 parameters
+🚀 Using GPU for processing!
+🔄 Preprocessing dataset...
+🚀 Using GPU for evaluation!
+🔍 Starting manual evaluation...
+📝 Sample prediction #1: oh nee dit moet ik denk ik niet lezen
+📝 Reference #1: oh nee dit moet ik denk ik niet lezen
+📝 Sample prediction #2: will je nu de tekst hardop voor lezen?
+📝 Reference #2: wil je nu de tekst hardop voorlezen
+📝 Sample prediction #3: ze moest hun kamp steeds verplaatsen
+📝 Reference #3: ze moesten hun kamp steeds verplaatsen
+📝 Sample prediction #4: zij heeft ook niet echt een hekel aan Robbie.
+📝 Reference #4: ze heeft ook niet echt een hekel aan robbie
+📝 Sample prediction #5: z'n gooit haar krijtje.
+📝 Reference #5: ze gooit haar krijtje
+
+📊 Final Evaluation Results:
+WER: 0.2735 | CER: 0.1119

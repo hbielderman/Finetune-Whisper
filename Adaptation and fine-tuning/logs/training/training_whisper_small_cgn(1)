@@ -1,0 +1,61 @@
+
+🚀 Starting training for language: dutch (nl)
+🔍 Loading CGN2 dataset for language: nl (dutch)
+Component comp-o -> Found 561 ort files
+Component comp-a -> Found 925 ort files
+✅ Loaded 1486 CGN2 samples.
+📥 Loaded CGN2 dataset: DatasetDict({
+    train: Dataset({
+        features: ['audio', 'sentence'],
+        num_rows: 1188
+    })
+    test: Dataset({
+        features: ['audio', 'sentence'],
+        num_rows: 298
+    })
+}) (nl)
+📊 Train samples: 1188, Test samples: 298
+📊 Average: 30.00 sec
+📊 Median:  30.00 sec
+📊 Max:     30.00 sec
+📊 Min:     30.00 sec
+📊 Average: 30.00 sec
+📊 Median:  30.00 sec
+📊 Max:     30.00 sec
+📊 Min:     30.00 sec
+📊 Average: 30.00 sec
+📊 Median:  30.00 sec
+📊 Max:     30.00 sec
+📊 Min:     30.00 sec
+📊 Average: 30.00 sec
+📊 Median:  30.00 sec
+📊 Max:     30.00 sec
+📊 Min:     30.00 sec
+💻 Training on device: cuda
+{'eval_loss': 0.6052970886230469, 'eval_runtime': 52.4924, 'eval_samples_per_second': 5.677, 'eval_steps_per_second': 5.677, 'epoch': 1.0}
+✓ Saving best model for language nl at epoch 2 with eval_loss 0.6053
+{'eval_loss': 0.4160418212413788, 'eval_runtime': 55.942, 'eval_samples_per_second': 5.327, 'eval_steps_per_second': 5.327, 'epoch': 2.0}
+✓ Saving best model for language nl at epoch 3 with eval_loss 0.4160
+{'eval_loss': 0.4233151078224182, 'eval_runtime': 60.1685, 'eval_samples_per_second': 4.953, 'eval_steps_per_second': 4.953, 'epoch': 3.0}
+{'loss': 1.1965, 'grad_norm': 9.858674049377441, 'learning_rate': 3.8101629913710445e-06, 'epoch': 3.36}
+{'eval_loss': 0.4005923569202423, 'eval_runtime': 60.1951, 'eval_samples_per_second': 4.951, 'eval_steps_per_second': 4.951, 'epoch': 4.0}
+✓ Saving best model for language nl at epoch 5 with eval_loss 0.4006
+{'eval_loss': 0.4175855219364166, 'eval_runtime': 59.6627, 'eval_samples_per_second': 4.995, 'eval_steps_per_second': 4.995, 'epoch': 5.0}
+{'eval_loss': 0.42048880457878113, 'eval_runtime': 53.7463, 'eval_samples_per_second': 5.545, 'eval_steps_per_second': 5.545, 'epoch': 6.0}
+{'loss': 0.2024, 'grad_norm': 14.340996742248535, 'learning_rate': 3.6184084372003834e-06, 'epoch': 6.71}
+{'eval_loss': 0.44161567091941833, 'eval_runtime': 52.9292, 'eval_samples_per_second': 5.63, 'eval_steps_per_second': 5.63, 'epoch': 7.0}
+{'eval_loss': 0.48913446068763733, 'eval_runtime': 60.1886, 'eval_samples_per_second': 4.951, 'eval_steps_per_second': 4.951, 'epoch': 8.0}
+{'eval_loss': 0.48805010318756104, 'eval_runtime': 60.2193, 'eval_samples_per_second': 4.949, 'eval_steps_per_second': 4.949, 'epoch': 9.0}
+✓ Saving model for language nl at epoch 10 (checkpoint)
+{'eval_loss': 0.5070727467536926, 'eval_runtime': 52.4396, 'eval_samples_per_second': 5.683, 'eval_steps_per_second': 5.683, 'epoch': 10.0}
+{'loss': 0.042, 'grad_norm': 9.149890899658203, 'learning_rate': 3.4266538830297214e-06, 'epoch': 10.07}
+{'eval_loss': 0.5424389839172363, 'eval_runtime': 52.6735, 'eval_samples_per_second': 5.657, 'eval_steps_per_second': 5.657, 'epoch': 11.0}
+{'train_runtime': 4841.3198, 'train_samples_per_second': 17.177, 'train_steps_per_second': 2.154, 'train_loss': 0.44040283340735725, 'epoch': 11.0}
+🏆 Best eval_loss during training: 0.4006
+
+==== Final Metrics for DUTCH ====
+eval_loss: 0.5424
+eval_runtime: 53.7820
+eval_samples_per_second: 5.5410
+eval_steps_per_second: 5.5410
+epoch: 11.0000

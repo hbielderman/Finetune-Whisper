@@ -1,0 +1,20 @@
+📂 Loading dataset...
+🔄 Loading model and processor...
+🔍 Loaded model: ./whisper_nl_CGN/best with 241734912 parameters
+🚀 Using GPU for processing!
+🔄 Preprocessing dataset...
+🚀 Using GPU for evaluation!
+🔍 Starting manual evaluation...
+📝 Sample prediction #1: ."geritsel van papier."verkeer op achtergrond."sprekers spelen een spelletje.
+📝 Reference #1: oh nee dit moet ik denk ik niet lezen
+📝 Sample prediction #2:  Wil je de teksten hard op voorlezen?
+📝 Reference #2: wil je nu de tekst hardop voorlezen
+📝 Sample prediction #3:  Staten voor plaatsel.
+📝 Reference #3: ze moesten hun kamp steeds verplaatsen
+📝 Sample prediction #4:  zacht op achtergrond hoor je geluiden te horen. geluid van serviesgoed.
+📝 Reference #4: ze heeft ook niet echt een hekel aan robbie
+📝 Sample prediction #5:  zachtjes tijdens het einde op de achtergrond.
+📝 Reference #5: ze gooit haar krijtje
+
+📊 Final Evaluation Results:
+WER: 1.0497 | CER: 0.9184
